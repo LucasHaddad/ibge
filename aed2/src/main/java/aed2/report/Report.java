@@ -1,4 +1,4 @@
-package aed2;
+package aed2.report;
 
 import java.io.IOException;
 
@@ -9,18 +9,18 @@ import aed2.structure.List;
 
 public class Report {
 
-	static final String ARCHIVE = "\\\\data.txt";
+	static final String ARCHIVE = ClassLoader.getSystemResource("data.txt").getFile();
 	private int total;
 
 	private void totalPopulation() throws IOException {
 		System.out.println("\n--------------------------------");
-		System.out.println("   Relatório de categorização   ");
+		System.out.println("   RelatÃ³rio de categorizaÃ§Ã£o   ");
 		System.out.println("--------------------------------\n");
 
 		PersonDAO dao = new PersonDAO(ARCHIVE);
 		List people = dao.get();
 		total = people.size();
-		System.out.println("População total: " + total);
+		System.out.println("PopulaÃ§Ã£o total: " + total);
 		System.out.println("_______________________________________");
 	}
 
@@ -117,11 +117,11 @@ public class Report {
 			}	aux=aux.next;
 		}
 		System.out.println("_______________________________________");
-		System.out.println("\nESTADO CÍVIL\n");
+		System.out.println("\nESTADO CIVIL\n");
 		System.out.println("Casado(a): " + Married + " (" + Married * 100 / total + "%)");
 		System.out.println("Solteiro(a): " + Single + " (" + Single * 100 / total + "%)");
 		System.out.println("Divorciado(a): " + Divorced + " (" + Divorced * 100 / total + "%)");
-		System.out.println("Viúvo(a): " + Widow + " (" + Widow * 100 / total + "%)");
+		System.out.println("ViÃºvo(a): " + Widow + " (" + Widow * 100 / total + "%)");
 	}
 
 	private void race() throws IOException {
@@ -145,21 +145,26 @@ public class Report {
 			}	aux=aux.next;
 		}
 		System.out.println("_______________________________________");
-		System.out.println("\nRAÇA\n");
+		System.out.println("\nRAÃ‡A\n");
 		System.out.println("Parda: " + Brown + " (" + Brown * 100 / total + "%)");
 		System.out.println("Preta: " + Black + " (" + Black * 100 / total + "%)");
 		System.out.println("Branca: " + White + " (" + White * 100 / total + "%)");
 		System.out.println("Amarela: " + Asian + " (" + Asian * 100 / total + "%)");
-		System.out.println("Indígena: " + Native + " (" + Native * 100 / total + "%)");
+		System.out.println("IndÃ­gena: " + Native + " (" + Native * 100 / total + "%)");
 	}
 
-	public static void main(String [] ARGS) throws IOException {
-		Report report = new Report();
-		report.totalPopulation();
-		report.sexPorcentage();
-		report.Age();
-		report.Area();
-		report.maritalStatus();
-		report.race();
+	public void print() {
+		try {
+			Report report = new Report();
+			report.totalPopulation();
+			report.sexPorcentage();
+			report.Age();
+			report.Area();
+			report.maritalStatus();
+			report.race();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 }

@@ -29,7 +29,7 @@ public abstract class AbstractDAO implements DAO {
 	 * Construtor.
 	 */
     public AbstractDAO(String fileName) {
-    	this.fileName = System.getProperty("user.dir") + fileName;
+    	this.fileName = fileName;
     }
 
     /**

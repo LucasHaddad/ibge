@@ -1,0 +1,13 @@
+./**/gradlew
+./**/gradlew.bat
+./**/.gradle
+./**/.settings
+./**/.idea
+./**/.project
+./**/gradle.properties
+./**/bin
+./**/gradle
+./**/build
+./**/.classpath
+./**/.gitignore
+./**/.vscode
