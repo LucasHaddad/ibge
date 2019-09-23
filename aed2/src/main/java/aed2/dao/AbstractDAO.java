@@ -9,7 +9,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import aed2.model.Item;
-import aed2.structure.*;
+import aed2.structure.Cell;
+import aed2.structure.List;
+import aed2.structure.HashTable;
 
 /**
  * Implementação de DAO para arquivo.
